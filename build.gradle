@@ -50,3 +50,7 @@ dependencies {
 task wrapper(type: Wrapper) {
 	gradleVersion = '2.9'
 }
+
+task stage(dependsOn: ['clean', 'test', 'bootRepackage'])
+
+bootRepackage.mustRunAfter clean
