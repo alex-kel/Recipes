@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException
+import org.springframework.security.web.util.matcher.RequestHeaderRequestMatcher
 import ru.dz.receipts.domain.Account
 import ru.dz.receipts.repository.AccountRepository
 
@@ -25,9 +26,12 @@ class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().fullyAuthenticated().and().
-                httpBasic().and().
-                csrf().disable();
+        http.csrf().disable()
+                .authorizeRequests()
+                    .antMatchers("/login", "/register").permitAll()
+                    .anyRequest().fullyAuthenticated()
+                    .and()
+                .httpBasic()
 
     }
 }
@@ -40,7 +44,7 @@ class AuthenticationConfiguration extends GlobalAuthenticationConfigurerAdapter{
 
     @Override
     public void init(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService());
+        auth.userDetailsService(userDetailsService())
     }
 
     @Bean
@@ -49,11 +53,11 @@ class AuthenticationConfiguration extends GlobalAuthenticationConfigurerAdapter{
 
             @Override
             public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-                Account loginUser = loginUserRepo.findByLogin(login);
+                Account loginUser = loginUserRepo.findByLogin(login)
                 if(loginUser != null) {
-                    return new User(loginUser.getLogin(), loginUser.getPassword(), AuthorityUtils.createAuthorityList("USER"));
+                    return new User(loginUser.getLogin(), loginUser.getPassword(), AuthorityUtils.createAuthorityList("USER"))
                 } else {
-                    throw new UsernameNotFoundException("could not find the user '" + login + "'");
+                    throw new UsernameNotFoundException("could not find the user '" + login + "'")
                 }
             }
 
