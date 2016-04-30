@@ -1,6 +1,5 @@
-package ru.dz.receipts.dto
+package ru.dz.recipes.dto
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import org.hibernate.validator.constraints.NotEmpty
 
 import javax.validation.constraints.NotNull

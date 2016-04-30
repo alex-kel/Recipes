@@ -1,10 +1,10 @@
-package ru.dz.receipts.service
+package ru.dz.recipes.service
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Service
-import ru.dz.receipts.domain.Account
-import ru.dz.receipts.repository.AccountRepository
+import ru.dz.recipes.domain.Account
+import ru.dz.recipes.repository.AccountRepository
 
 /**
  * Created by Alex on 30.04.16.

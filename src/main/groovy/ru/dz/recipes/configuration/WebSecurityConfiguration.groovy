@@ -1,4 +1,4 @@
-package ru.dz.receipts.configuration
+package ru.dz.recipes.configuration
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
@@ -13,9 +13,8 @@ import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException
-import org.springframework.security.web.util.matcher.RequestHeaderRequestMatcher
-import ru.dz.receipts.domain.Account
-import ru.dz.receipts.repository.AccountRepository
+import ru.dz.recipes.domain.Account
+import ru.dz.recipes.repository.AccountRepository
 
 /**
  * Created by Alex on 22.03.16.

@@ -1,8 +1,8 @@
-package ru.dz.receipts.repository
+package ru.dz.recipes.repository
 
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
-import ru.dz.receipts.domain.Account
+import ru.dz.recipes.domain.Account
 
 /**
  * Created by Alex on 22.03.16.

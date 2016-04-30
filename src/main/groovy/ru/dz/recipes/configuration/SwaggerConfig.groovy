@@ -1,4 +1,4 @@
-package ru.dz.receipts.configuration
+package ru.dz.recipes.configuration
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -20,7 +20,7 @@ class SwaggerConfig {
         new Docket(DocumentationType.SWAGGER_2)
                 .ignoredParameterTypes(MetaClass.class)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("ru.dz.receipts.controller"))
+                .apis(RequestHandlerSelectors.basePackage("ru.dz.recipes.controller"))
                 .paths(PathSelectors.any())
                 .build()
     }

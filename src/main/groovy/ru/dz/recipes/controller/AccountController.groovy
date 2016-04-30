@@ -1,19 +1,16 @@
-package ru.dz.receipts.controller
+package ru.dz.recipes.controller
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.security.core.context.SecurityContextHolder
-import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
-import ru.dz.receipts.domain.Account
-import ru.dz.receipts.dto.AccountCreationDto
-import ru.dz.receipts.dto.AccountUpdateDto
-import ru.dz.receipts.service.AccountService
+import ru.dz.recipes.dto.AccountCreationDto
+import ru.dz.recipes.dto.AccountUpdateDto
+import ru.dz.recipes.service.AccountService
 
 import javax.validation.Valid
 
