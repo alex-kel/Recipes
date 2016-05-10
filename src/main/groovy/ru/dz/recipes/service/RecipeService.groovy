@@ -29,6 +29,8 @@ class RecipeService {
     Recipe createNewRecipeFromDto(RecipeDto dto) {
         def recipe = new Recipe()
         recipe.name = dto.name
+        recipe.description = dto.description
+        recipe.imageUrl = dto.imageUrl
         recipe.steps = new LinkedList<>()
         recipe.products = new LinkedList<>()
         processProducts(dto, recipe)
