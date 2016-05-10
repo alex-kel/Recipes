@@ -25,6 +25,10 @@ class Recipe {
 
     String name
 
+    String description
+
+    String imageUrl
+
     @ManyToMany
     @JoinTable
     List<Product> products
