@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController
 import ru.dz.recipes.dto.AccountCreationDto
 import ru.dz.recipes.dto.AccountUpdateDto
 import ru.dz.recipes.service.AccountService
+import ru.dz.recipes.service.AuthService
 
 import javax.validation.Valid
 
@@ -30,5 +31,10 @@ class AccountController {
     @RequestMapping(value = "/account", method = RequestMethod.PUT)
     @ResponseBody ResponseEntity update(@RequestBody @Valid AccountUpdateDto accountUpdateDto) {
         new ResponseEntity(accountService.updateAccount(accountUpdateDto),HttpStatus.ACCEPTED)
+    }
+
+    @RequestMapping(value = "/account", method = RequestMethod.GET)
+    @ResponseBody ResponseEntity getCurrentUser() {
+        new ResponseEntity(accountService.getCurrentAccount(), HttpStatus.OK)
     }
 }

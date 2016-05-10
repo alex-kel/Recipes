@@ -1,5 +1,6 @@
 package ru.dz.recipes.domain
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import org.hibernate.annotations.GenericGenerator
 
 import javax.persistence.Column
@@ -21,5 +22,6 @@ class Account {
 
     String login;
 
+    @JsonIgnore
     String password;
 }
