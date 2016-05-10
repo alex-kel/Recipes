@@ -39,5 +39,9 @@ class AccountService {
         accountRepository.save(account)
     }
 
+    Account getCurrentAccount() {
+        authService.getCurrrentUser()
+    }
+
 
 }
