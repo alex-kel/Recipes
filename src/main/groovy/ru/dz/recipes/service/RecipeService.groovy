@@ -58,6 +58,7 @@ class RecipeService {
             mapping.product = product
             mapping.amount = p.amount
             mapping.unit = p.unit
+            mappings.add(mapping)
         }
         mappings
     }
@@ -66,14 +67,14 @@ class RecipeService {
         def amountMappingsToSave = new LinkedList<StepToProductMapping>()
         def steps = dto.getSteps()
         steps.each { step ->
-            def products  = step.getProducts()
+            def products  = step.products
             def stepToStore = new Step()
             stepToStore.description = step.description
             stepToStore.order = step.step
             stepToStore.time = step.time
             stepToStore.products = new LinkedList<>()
             products.each { product ->
-                def storedProduct = findProductInRecipeByName(recipe, product.getName())
+                def storedProduct = productService.getProductByNameOrCreateNew(product.name)
                 stepToStore.products.add(storedProduct)
 
                 def mapping = new StepToProductMapping();
@@ -100,7 +101,7 @@ class RecipeService {
                 return p
             }
         }
-        throw Exception("Recipe products not filled")
+        throw new Exception("Recipe products not filled")
     }
 
     RecipeDto getRecipeDtoById(long id) {
