@@ -2,6 +2,8 @@ package ru.dz.recipes.service
 
 import org.springframework.beans.factory.annotation.Autowire
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
 import ru.dz.recipes.domain.Product
 import ru.dz.recipes.domain.ProductToRecipeMapping
@@ -117,5 +119,21 @@ class RecipeService {
         List<ProductToRecipeMapping> productMapping = productToRecipeMappingRepository.findByRecipe(recipe)
 
         new RecipeDto(recipe, productMapping, stepMapping)
+    }
+
+    List<RecipeDto> getPagedRecipes(int page, int size) {
+        def result = new LinkedList<RecipeDto>()
+        Page<Recipe> retrievedPage = recipeRepository.findAll(new PageRequest(page, size))
+        retrievedPage.content.each { recipe ->
+            List<StepToProductMapping> stepMapping = new LinkedList<>();
+            recipe.steps.each { step ->
+                stepMapping.addAll(stepToProductMappingRepository.findByStep(step))
+            }
+
+            List<ProductToRecipeMapping> productMapping = productToRecipeMappingRepository.findByRecipe(recipe)
+
+            result.add(new RecipeDto(recipe, productMapping, stepMapping))
+        }
+        result
     }
 }
