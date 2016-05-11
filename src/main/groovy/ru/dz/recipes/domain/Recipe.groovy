@@ -38,4 +38,19 @@ class Recipe {
 
     @OneToMany
     List<Account> staredBy;
+
+    boolean equals(o) {
+        if (this.is(o)) return true
+        if (getClass() != o.class) return false
+
+        Recipe recipe = (Recipe) o
+
+        if (id != recipe.id) return false
+
+        return true
+    }
+
+    int hashCode() {
+        return (id != null ? id.hashCode() : 0)
+    }
 }

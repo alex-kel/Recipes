@@ -2,7 +2,8 @@ package ru.dz.recipes.repository
 
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
-import ru.dz.recipes.domain.Product
+import ru.dz.recipes.domain.ProductToRecipeMapping
+import ru.dz.recipes.domain.Recipe
 import ru.dz.recipes.domain.Step
 import ru.dz.recipes.domain.StepToProductMapping
 
@@ -10,7 +11,7 @@ import ru.dz.recipes.domain.StepToProductMapping
  * Created by Alex on 03.05.16.
  */
 @Repository
-interface StepToProductMappingRepository extends CrudRepository<StepToProductMapping, Long> {
+interface ProductToRecipeMappingRepository extends CrudRepository<ProductToRecipeMapping, Long> {
 
-    List<StepToProductMapping> findByStep(Step step)
+    List<ProductToRecipeMapping> findByRecipe(Recipe recipe)
 }
