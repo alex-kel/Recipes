@@ -24,4 +24,23 @@ class Account {
 
     @JsonIgnore
     String password;
+
+    boolean equals(o) {
+        if (this.is(o)) return true
+        if (getClass() != o.class) return false
+
+        Account account = (Account) o
+
+        if (id != account.id) return false
+        if (login != account.login) return false
+
+        return true
+    }
+
+    int hashCode() {
+        int result
+        result = (int) (id ^ (id >>> 32))
+        result = 31 * result + (login != null ? login.hashCode() : 0)
+        return result
+    }
 }

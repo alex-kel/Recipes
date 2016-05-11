@@ -1,6 +1,7 @@
 package ru.dz.recipes.repository
 
 import org.springframework.data.repository.CrudRepository
+import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.stereotype.Repository
 import ru.dz.recipes.domain.Recipe
 
@@ -8,5 +9,5 @@ import ru.dz.recipes.domain.Recipe
  * Created by Alex on 03.05.16.
  */
 @Repository
-interface RecipeRepository extends CrudRepository<Recipe, Long> {
+interface RecipeRepository extends PagingAndSortingRepository<Recipe, Long> {
 }
